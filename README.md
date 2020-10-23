@@ -27,3 +27,7 @@ Defected Bot is a Discord.js v12 bot template which features a command &amp; eve
 - `nsfw` - If set to true, command will work only in NSFW channels.
 - `cooldown` - Command cooldown in milliseconds, '0' to disable.
 - `ownerOnly` - If set to true, command will work only for owners, whose IDs are listed in config.json.
+
+#### Inspired by
+
+https://github.com/KSJaay/Alita
