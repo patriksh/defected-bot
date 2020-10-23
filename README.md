@@ -24,6 +24,6 @@ Defected Bot is a Discord.js v12 bot template which features a command &amp; eve
 - `aliases` - Command aliases, more 'strings' that will trigger this same command.
 - `permissions` - Permissions user needs to have to execute the command, e.g. 'MANAGE_CHANNELS'.
 - `botPermissions` - Permissions bot needs to have to execute the command, e.g. 'EMBED_LINKS'.
-- `nsfw` - Allow command only in NSFW channels.
-- `cooldown` - Command cooldown in milliseconds.
-- `ownerOnly` - If set to true, command will only work for owners, whose IDs are listed in config.json
+- `nsfw` - If set to true, command will work only in NSFW channels.
+- `cooldown` - Command cooldown in milliseconds, '0' to disable.
+- `ownerOnly` - If set to true, command will work only for owners, whose IDs are listed in config.json.
