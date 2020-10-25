@@ -19,7 +19,7 @@ module.exports.execute = async(bot, msg, args, data) => {
     if(!newPrefix.length)
         return msg.channel.send('My prefix for this guild is `' + prefix + '`');
 
-    if(prefix.length > 5)
+    if(newPrefix.length > 5)
         return msg.channel.send('Prefix shouldn\'t be longer than 5 characters.');
 
     data.guild.prefix = newPrefix;
