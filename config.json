@@ -1,8 +1,0 @@
-{
-    "token": "YourToken",
-    "prefix": "!",
-    "mongoDB": "mongodb://127.0.0.1:27017/DiscordBot",
-    "color": "BLUE",
-    "credits": "Defected#0001 - www.defected.dev",
-    "owners": []
-}

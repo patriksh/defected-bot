@@ -1,0 +1,8 @@
+{
+    "token": "Your Token",
+    "prefix": "!",
+    "mongoDB": "mongodb://127.0.0.1:27017/DiscordBot",
+    "color": "Embed Color (HEX)",
+    "credits": "Your Username",
+    "owners": ["Your ID"]
+}
