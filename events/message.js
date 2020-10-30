@@ -10,7 +10,7 @@ module.exports = async(bot, msg) => {
         let prefix = !guildDB.prefix ? bot.config.prefix : guildDB.prefix;
 
         if(!msg.content.toLowerCase().startsWith(prefix)) {
-            if(msg.content.trim() == '<@!' + bot.user.id + '>' || msg.content.trim() == '<@' + bot.user.id + '}>')
+            if(msg.content.trim() == '<@!' + bot.user.id + '>' || msg.content.trim() == '<@' + bot.user.id + '>')
                 return embeds.mention(msg, prefix, bot);
 
             return;
