@@ -6,15 +6,14 @@ module.exports = {
     usage: 'ping',
     aliases: ['latency'],
     permissions: [],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: false,
-    cooldown: 2000,
+    cooldown: 0,
     ownerOnly: false
 }
 
 module.exports.execute = async(bot, msg, args, data) => {
     let embed = new Discord.MessageEmbed()
-        .setAuthor(bot.user.username + ' ping', bot.user.displayAvatarURL())
         .setDescription('**' + bot.ws.ping + '** ms')
         .setColor(bot.config.color);
 

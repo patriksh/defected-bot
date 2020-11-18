@@ -7,7 +7,7 @@ module.exports = {
     usage: 'pussy',
     aliases: ['kitten', 'cat'],
     permissions: [],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: true,
     cooldown: 1000,
     ownerOnly: false

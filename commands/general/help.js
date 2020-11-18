@@ -9,7 +9,7 @@ module.exports = {
     usage: 'help',
     aliases: ['commands', 'cmds'],
     permissions: [],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: false,
     cooldown: 0,
     ownerOnly: false
@@ -18,12 +18,12 @@ module.exports = {
 module.exports.execute = async(bot, msg, args, data) => {
     let prefix = !data.guild.prefix ? bot.config.prefix : data.guild.prefix;
     let embed = new Discord.MessageEmbed()
-        .setAuthor(bot.user.username + ' help', bot.user.displayAvatarURL())
+        .setAuthor('Command list')
         .setFooter(bot.config.credits)
         .setColor(bot.config.color);
 
     // Personally I would hardcode the help command, it gives much more flexibility than any of the automated options.
-    
+
     let categories = await readdir('./commands/');
     categories.forEach(c => {
         let commands = fs.readdirSync('./commands/' + c + '/').filter(file => file.endsWith('.js'))

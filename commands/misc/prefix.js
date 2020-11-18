@@ -6,9 +6,9 @@ module.exports = {
     usage: 'prefix <string>',
     aliases: [],
     permissions: ['ADMINISTRATOR'],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: false,
-    cooldown: 1000,
+    cooldown: 0,
     ownerOnly: false
 }
 
@@ -16,14 +16,25 @@ module.exports.execute = async(bot, msg, args, data) => {
     let prefix = !data.guild.prefix ? bot.config.prefix : data.guild.prefix;
 
     let newPrefix = args.join(' ');
-    if(!newPrefix.length)
-        return msg.channel.send('My prefix for this guild is `' + prefix + '`');
+    if(!newPrefix.length) {
+        let embed = new Discord.MessageEmbed()
+            .setColor(bot.config.color)
+            .setDescription('My prefix for this guild is `' + prefix + '`')
+        return msg.channel.send(embed);
+    }
 
-    if(newPrefix.length > 5)
-        return msg.channel.send('Prefix shouldn\'t be longer than 5 characters.');
+    if(newPrefix.length > 30) {
+        let embed = new Discord.MessageEmbed()
+            .setColor(bot.config.color)
+            .setDescription('Prefix shouldn\'t be longer than 30 characters. Yours has ' + newPrefix.length + '.')
+        return msg.channel.send(embed);
+    }
 
     data.guild.prefix = newPrefix;
     await data.guild.save();
 
-    return msg.channel.send('Prefix changed to `' + newPrefix + '`.');
+    let embed = new Discord.MessageEmbed()
+        .setColor(bot.config.color)
+        .setDescription('Prefix changed to `' + newPrefix + '`. If you ever forget it just tag me.')
+    return msg.channel.send(embed);
 }

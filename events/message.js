@@ -6,17 +6,24 @@ module.exports = async(bot, msg) => {
     try {
         if(msg.author.bot || !msg.guild) return;
 
-        let guildDB = await bot.data.getGuildDB(msg.guild.id)
+        let guildDB = await bot.data.getGuildDB(msg.guild.id);
         let prefix = !guildDB.prefix ? bot.config.prefix : guildDB.prefix;
+        let argsSlice = prefix.length;
 
         if(!msg.content.toLowerCase().startsWith(prefix.toLowerCase())) {
-            if(msg.content.trim() == '<@!' + bot.user.id + '>' || msg.content.trim() == '<@' + bot.user.id + '>')
+            let content = msg.content.trim();
+            let mention1 = '<@!' + bot.user.id + '>';
+            let mention2 = '<@' + bot.user.id + '>';
+
+            if(content == mention1 || content == mention2)
                 return embeds.mention(msg, prefix, bot);
 
-            return;
+            if(content.startsWith(mention1)) argsSlice = mention1.length
+            else if(content.startsWith(mention2)) argsSlice = mention2.length
+            else return;
         }
 
-        let args = msg.content.slice(prefix.length).trim().split(/ +/g);
+        let args = msg.content.slice(argsSlice).trim().split(/ +/g);
         let command = args.shift().toLowerCase();
         let cmdFile = bot.commands.get(command) || bot.commands.find(cmdFile => cmdFile.aliases && cmdFile.aliases.includes(command));
 
@@ -53,6 +60,7 @@ module.exports = async(bot, msg) => {
 
         cmdFile.execute(bot, msg, args, data);
     } catch(err) {
+        console.log(err);
         bot.logger.error('Command execution error - ' + err);
     }
 }

@@ -6,7 +6,7 @@ module.exports = {
     usage: 'botstats',
     aliases: ['stats', 'info'],
     permissions: ['ADMINISTRATOR'],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: false,
     cooldown: 0,
     ownerOnly: false
@@ -14,7 +14,7 @@ module.exports = {
 
 module.exports.execute = async(bot, msg, args, data) => {
     let embed = new Discord.MessageEmbed()
-        .setAuthor(bot.user.username + ' stats', bot.user.displayAvatarURL())
+        .setTitle(bot.user.username)
         .setThumbnail(bot.user.displayAvatarURL())
         .setFooter(bot.config.credits)
         .setColor(bot.config.color)
