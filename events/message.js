@@ -60,7 +60,6 @@ module.exports = async(bot, msg) => {
 
         cmdFile.execute(bot, msg, args, data);
     } catch(err) {
-        console.log(err);
         bot.logger.error('Command execution error - ' + err);
     }
 }
